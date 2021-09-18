@@ -1,0 +1,35 @@
+1	Armory
+2	Barracks
+3	Bunker
+4	Command Center
+4.1	Orbital Command
+4.2	Planetary Fortress
+5	Engineering Bay
+6	Factory
+7	Fusion Core
+8	Ghost Academy
+8.1	Shadow Ops
+9	Missile Turret
+10	Refinery
+11	Starport
+12	Supply Depot
+13	Sensor Tower
+14	Add-Ons
+14.1	Reactor
+14.2	Tech Lab
+14.3	Tech Reactor
+1.1	SCV
+1.2	MULE
+1.3	Marine
+1.4	Marauder
+1.5	Reaper
+1.6	Ghost
+1.7	Hellion
+1.8	Siege Tank
+1.9	Thor
+1.9.1	Odin
+1.10	Viking
+1.11	Medivac
+1.12	Raven
+1.13	Banshee
+1.14	Battlecruiser

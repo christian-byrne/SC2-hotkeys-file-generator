@@ -1,0 +1,30 @@
+1	Cybernetics Core
+2	Fleet Beacon
+3	Forge
+4	Gateway
+5	Nexus
+6	Pylon
+7	Robotics Facility
+8	Robotics Support Bay
+9	Stargate
+10	Templar Archives
+11	Dark Shrine
+12	Photon Cannon
+13	Twilight Council
+1	Probe
+2	Zealot
+3	Sentry
+4	Stalker
+5	High Templar
+6	Dark Templar
+7	Archon
+8	Immortal
+9	Colossus
+10	Observer
+11	Phase Prism
+12	Phoenix
+13	Scout
+14	Void Ray
+15	Carrier
+16	Mothership
+17	Void Seeker

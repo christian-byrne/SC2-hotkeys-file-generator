@@ -1,0 +1,38 @@
+1	Larva
+2	Drone
+3	Zergling
+4	Roach
+5	Baneling
+6	Overlord
+7	Overseer
+8	Changeling
+9	Queen
+10	Hydralisk
+11	Lurker
+12	Infestor
+13	Infested Terran
+14	Ultralisk
+15	Mutalisk
+16	Corruptor
+17	Brood Lord
+17.1	Broodling
+1	Hatchery
+1.1	Lair
+1.2	Hive
+2	Infested Command Center
+3	Spawning Pool
+4	Extractor
+5	Evolution Chamber
+6	Hydralisk Den
+7	Spire
+7.1	Greater Spire
+8	Ultralisk Cavern
+9	Infestation Pit
+10	Infested Barracks
+11	Infested Supply Depot
+12	Infested Starport
+13	Baneling Nest
+14	Roach Warren
+15	Nydus Worm
+16	Spine crawler
+17	Spore Crawler
