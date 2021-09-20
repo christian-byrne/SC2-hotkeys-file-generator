@@ -60,7 +60,7 @@ Automates the process of generating SC2 hotkey files which adhere to some sort o
 1. type `cd file_path` in the terminal, replace `file_path` with the path you just copied. You may need to enclose the file path in quotes if it has spaces
 1. Get this repository's clone address (the green drop down at the top of the page that says `code`)
 1. Type `git clone URL` in terminal, replacing `URL` with the URL you copied from previous step
-1. Enter `cd sc2-hotkeys` in terminal
+1. Enter `cd SC2-hotkeys-file-generator` in terminal
 1. Download python3 if you do not have it
 1. In terminal, type:
 
@@ -73,13 +73,13 @@ py gen_hotkeys.py
 ```
 
 10. Follow instructions that appear in the terminal
-11. The output file will be in the same folder you are in (`sc2-hotkeys` folder). There are two example files in the `example-output` folder (`zerg-control-grid.SC2Hotkeys` and `zerg-shift-grid.SC2Hotkeys`)
-12. Drag and drop the output file (its extension should be `.SC2Hotkeys`) to your SC2 Hotkeys folder ([See: Where is sc2 hotkey folder on my computer?](https://liquipedia.net/starcraft2/Hotkeys#:~:text=Hotkeys%20are%20stored%20in%20the,your%20Windows%20My%20Documents%20folder.)). If you've never made any custom hotkeys, you may need to create a new hotkey profile in the SC2 game and make a single change, and the folder will be generated. 
+11. The output file will be in the same folder you are in (`SC2-hotkeys-file-generator` folder). There are two example files in the `example-output` folder (`zerg-control-grid.SC2Hotkeys` and `zerg-shift-grid.SC2Hotkeys`)
+12. Drag and drop the output file (its extension should be `.SC2Hotkeys`) to your SC2 Hotkeys folder ([See: Where is sc2 hotkey folder on my computer?](https://liquipedia.net/starcraft2/Hotkeys#:~:text=Hotkeys%20are%20stored%20in%20the,your%20Windows%20My%20Documents%20folder.)). If you've never made any custom hotkeys, you may need to create a new hotkey profile in the SC2 game and make a single change, and then the folder will be generated. 
 13. Restart/start the game. In SC2 game, go to `Menu` -> `Options` -> `Hotkeys` -> `Select Profile`
-14. click `ignore` if prompted about hotkey conflicts.
+14. click `Ignore` if prompted about hotkey conflicts.
 14. Select the newly created profile and click `Accept`
 
-***Note*** - You may also want to look at the hotkey files already in your hotkey folder and then copy paste some of the options at the top of the file into the newly created file (things like custom control groups and camera control which this script does not generate hotkeys for).
+***Note*** - You may also want to look at the hotkey file that you use that is already in your hotkey folder and then copy paste some of the options at the top of the file (for the `[Commands]` and `[Settings]` sections of the file) into the newly created file (things like custom control groups and camera control which this script does not generate hotkeys for).
 
 ## Credits & How this was Made
 
