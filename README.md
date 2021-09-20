@@ -1,9 +1,7 @@
-# SC2 HK
+# SC2 Auto HK Setup
 
 
 ###### Table of Contents
-
-<!-- TOC -->
 
 - [Reasons to Use](#reasons-to-use)
 - [Usage](#usage)
@@ -14,17 +12,15 @@
   - [Classifying Hotkey Assignments by Race](#classifying-hotkey-assignments-by-race)
   - [Code Script](#code-script)
   - [Other Features that can Be Easily Implemented](#other-features-that-can-be-easily-implemented)
-
-<!-- /TOC -->
-
+- [To Do](#to-do)
 
 
 *Automates the process of generating SC2 hotkey files which adhere to some sort of universal logic.* 
 
 
-Currently only works by supporting a grid defined by user. In other words, there is 4x5 a grid when you select a unit/building and look at the abilities/options in the bottom right. -- the user can assign a hotkey for each position in that grid so that it's consistent across all units/buildings. Other types of logic can easily be implemented, however.
+Currently only works by supporting a grid defined by user. In other words, there is a 4x5 grid when you select a unit/building and look at the abilities/options in the bottom right of the UI -- the user can assign a hotkey for each position in that grid so that it's consistent across all units/buildings. Other types of logic can easily be implemented, however -- but probably doesn't require code in those cases.
 
-**Please Note**: If someone finds this and tries to use it, if you have issues or features you want, create a post -- either are no problem. I only tested this on my own system because I didn't want to download SC2 on my other computers, so apologies for possible bugs. Hopefully you can stil figure out how the script generally works by reading this page -- and then use the info and the files in the repo to solve your problems. GLHF.
+**Note**: Issues or desired features => create a post. I only tested this on my own system because I didn't want to download SC2 on my other computers, so apologies for possible bugs. Hopefully you can stil figure out how the script generally works by reading this page -- and then use the info and the files in the repo to solve your problems. Many possible uses for the script could be replaced by some smart search/replace logic or Regex, especially if you look at the json file as a reference first. GLHF.
 
 
 ## Reasons to Use
@@ -119,3 +115,9 @@ Write the new hotkey assignments to the Blizzard hotkey file filetype. Filename 
 ##### Other Features that can Be Easily Implemented
 
 The groundwork is there to add other features for automating the process of creating custom hotkeys that adhere to some rule system like the grid. 
+
+## To Do
+
+- Other layout systems
+- Auto move file to correct folder
+- Test on other system
