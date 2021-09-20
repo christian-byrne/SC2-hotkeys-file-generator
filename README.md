@@ -8,12 +8,12 @@
 - [Reasons to Use](#reasons-to-use)
 - [Usage](#usage)
 - [Credits & How this was Made](#credits--how-this-was-made)
-    - [Hotkey File Template](#hotkey-file-template)
-    - [Clean Data](#clean-data)
-    - [Save as json File](#save-as-json-file)
-    - [Classifying Hotkey Assignments by Race](#classifying-hotkey-assignments-by-race)
-    - [Code Script](#code-script)
-    - [Other Features that can Be Easily Implemented](#other-features-that-can-be-easily-implemented)
+  - [Hotkey File Template](#hotkey-file-template)
+  - [Clean Data](#clean-data)
+  - [Save as json File](#save-as-json-file)
+  - [Classifying Hotkey Assignments by Race](#classifying-hotkey-assignments-by-race)
+  - [Code Script](#code-script)
+  - [Other Features that can Be Easily Implemented](#other-features-that-can-be-easily-implemented)
 
 <!-- /TOC -->
 
@@ -22,7 +22,7 @@
 *Automates the process of generating SC2 hotkey files which adhere to some sort of universal logic.* 
 
 
-Currently only works by supporting a grid defined by user. In other words, there is 4x4 a grid when you select a unit/building and look at the abilities/options in the bottom right. -- the user can assign a hotkey for each position in that grid so that it's consistent across all units/buildings. Other types of logic can easily be implemented, however.
+Currently only works by supporting a grid defined by user. In other words, there is 4x5 a grid when you select a unit/building and look at the abilities/options in the bottom right. -- the user can assign a hotkey for each position in that grid so that it's consistent across all units/buildings. Other types of logic can easily be implemented, however.
 
 **Please Note**: If someone finds this and tries to use it, if you have issues or features you want, create a post -- either are no problem. I only tested this on my own system because I didn't want to download SC2 on my other computers, so apologies for possible bugs. Hopefully you can stil figure out how the script generally works by reading this page -- and then use the info and the files in the repo to solve your problems. GLHF.
 
@@ -69,6 +69,7 @@ py grid.py
 11. The output file will be in the same folder you are in (`sc2-hotkeys` folder). There are two example files there already (`zerg-control-grid.SC2Hotkeys` and `zerg-shift-grid.SC2Hotkeys`)
 12. Drag and drop the output file (its extension should be `.SC2Hotkeys`) to your SC2 Hotkeys folder ([See: Where is sc2 hotkey folder on my computer?](https://liquipedia.net/starcraft2/Hotkeys#:~:text=Hotkeys%20are%20stored%20in%20the,your%20Windows%20My%20Documents%20folder.)). If you've never made any custom hotkeys, you may need to create a new hotkey profile in the SC2 game and make a single change, and the folder will be generated. 
 13. Restart/start the game. In SC2 game, go to `Menu` -> `Options` -> `Hotkeys` -> `Select Profile`
+14. click `ignore` if prompted about hotkey conflicts.
 14. Select the newly created profile and click `Accept`
 
 ***Note*** - You may also want to look at the hotkey files already in your hotkey folder and then copy paste some of the options at the top of the file into the newly created file (things like custom control groups and camera control which this script does not generate hotkeys for).

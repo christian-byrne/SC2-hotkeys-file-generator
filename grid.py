@@ -2,18 +2,18 @@
 
 
 
-1  2  3  4
+1   2  3  4  5
 
-5  6  7  8
+6   7  8  9  10
 
-9  10 11 12
+11  12 13 14 15
 
 
-q w e r
+q w e r t
 
-a s d f
+a s d f g
 
-z x c v
+z x c v b
 
 """
 
@@ -51,21 +51,39 @@ def find_file(keywords, sub_dir=""):
 
 
 class WhichRace:
-    def __init__(self):
+    def __init__(self, verbose=False):
         self.protoss, self.zerg, self.terran = \
             self._read_units_txt().values()
+        self.verbose = verbose
 
     def which(self, hotkey):
         units = "".join(hotkey.lower().split("=")[:-1])
         units = units.split("/")
+        cur = False
         for l in units:
             for race, name in zip([self.protoss, self.terran, self.zerg], ["protoss", "terran", "zerg"]):
                 if name in l:
                     return name
                 for race_unit in race:
                     if race_unit in l:
-                        return name
-        return "all"
+                        # If multiple matches, might be shared keyword like "Build" or "Upgrade"
+                        # In which case, return 'all' to be safe.
+                        if cur and cur != name:
+                            print(f"multi-match")
+                            return "all"
+                        # Set cur to race name if it is first match.
+                        cur = name
+
+        # Verbose mode for debugging or seeing process.
+        if self.verbose:
+            print(
+                "hotkey",
+                f"{cur if cur else 'all'}",
+                "",
+                sep="\n"
+            )
+
+        return "all" if not cur else cur
 
     def _read_units_txt(self):
         ret = {"protoss": [], "zerg": [], "terran": []}
@@ -104,9 +122,9 @@ class GridHotkeys:
         self.race_hotkeys = self._filter_race()
 
         self.reference_grid = [
-            "q", "w", "e", "r",
-            "a", "s", "d", "f",
-            "z", "x", "c", "v"
+            "q", "w", "e", "r", "t",
+            "a", "s", "d", "f", "g",
+            "z", "x", "c", "v", "b"
         ]
         self.grid_key = custom_grid or self.reference_grid
         self.prefix = grid_key_prefix
@@ -135,7 +153,7 @@ class GridHotkeys:
 
     def gen_hotkey_file(self):
         output_file = open(f"{pwd()}/{self.profile_name}.SC2Hotkeys", "w")
-        output_file.write("[Settings]\n[Hotkeys]\n[Commands]\n")
+        output_file.write("[Settings]\n\n[Hotkeys]\nCameraCenter=\n\n[Commands]\n")
         for hotkey in self._hotkeys_output():
             output_file.write(hotkey + '\n')
         output_file.close()
@@ -185,10 +203,10 @@ def main():
         "What should the name of the hotkey profile be? (no space):\n")
 
     # Auto Settings for Debugging
-    # race = "protoss"
+    # race = "zerg"
     # grid = False
-    # prefix = ""
-    # name = "test"
+    # prefix = "Shift"
+    # name = "zerg-shift-grid"
 
     hotkey_profile = GridHotkeys(
         race, name, custom_grid=grid, grid_key_prefix=prefix)
