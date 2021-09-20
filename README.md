@@ -117,7 +117,7 @@ Write the new hotkey assignments to the Blizzard hotkey file filetype. Filename 
 The groundwork is there to add other features for automating the process of creating custom hotkeys that adhere to some rule system like the grid. 
 
 ## To Do
-
 - Other layout systems
 - Auto move file to correct folder
 - Test on other system
+- Ideally, I would just print out the results of all the data parsing and cleaning and overwrite the raw data files with the output -- and then remove those functions. Ideally I would also find the few instances where the sorting algorithms are wrong and then hard-code those exceptions. But I won't do either because it doesn't affect the function of the script :D.

@@ -1,24 +1,43 @@
 """
+Auto-SC2-Hotkeys-File
 
+Author:
+    Christian P. Byrne
 
+Since:
+    Sep 21
 
-1   2  3  4  5
+Requirements:
+    json
 
-6   7  8  9  10
+Link:
+    https://github.com/trevor-reznik/SC2-hotkeys-file-generator
 
-11  12 13 14 15
+Filename:
+    grid.py
 
+Grid Layout:
 
-q w e r t
+    Indices:
+        1   2  3  4  5
 
-a s d f g
+        6   7  8  9  10
 
-z x c v b
+        11  12 13 14 15
+
+    Default Keys:
+        q w e r t
+
+        a s d f g
+
+        z x c v b
+
 
 """
 
 import os
 import json
+from test import test_cases
 
 
 def pwd():
@@ -57,6 +76,17 @@ class WhichRace:
         self.verbose = verbose
 
     def which(self, hotkey):
+        """Mostly accurate method to determine race that a hotkey assignment belongs to.
+
+        Args:
+            hotkey (str) : How the hotkey assignment appears in the .SC2Hotkeys file, 
+                without the newline character. Casing doesn't matter.
+
+        Returns:
+            (str): all, terran, protoss, or zerg.
+
+
+        """
         units = "".join(hotkey.lower().split("=")[:-1])
         units = units.split("/")
         cur = False
@@ -86,6 +116,8 @@ class WhichRace:
         return "all" if not cur else cur
 
     def _read_units_txt(self):
+        """Read and parse the list of units/buildings by race.
+        """
         ret = {"protoss": [], "zerg": [], "terran": []}
 
         for race in ret.keys():
@@ -152,8 +184,18 @@ class GridHotkeys:
         return ret_keys
 
     def gen_hotkey_file(self):
+        """Write the results of the script to a new .SC2Hotkeys file in the 
+        current directory. 
+
+        There is some syntax present in all these files which 
+        I include but I am not sure if it is even necessary. The 'CamerCenter' 
+        hotkey is disabled because it was causing problems for unknown reasons.
+
+
+        """
         output_file = open(f"{pwd()}/{self.profile_name}.SC2Hotkeys", "w")
-        output_file.write("[Settings]\n\n[Hotkeys]\nCameraCenter=\n\n[Commands]\n")
+        output_file.write(
+            "[Settings]\n\n[Hotkeys]\nCameraCenter=\n\n[Commands]\n")
         for hotkey in self._hotkeys_output():
             output_file.write(hotkey + '\n')
         output_file.close()
@@ -172,6 +214,9 @@ class GridHotkeys:
             return data["raw"]
 
     def _filter_race(self):
+        """Filter all hotkey assignments by race of class instance or hotkeys
+        that apply to all races.
+        """
         ret = []
         for hotkey in self.raw:
             hotkeys_race = self.find_race.which(hotkey)
@@ -182,6 +227,7 @@ class GridHotkeys:
 
 
 def get_user_grid():
+    """Read and return a custom grid if user opts in."""
     if "y" in input("Do you want to use a custom grid? [Y/N]\n"):
         print(
             "Type the first line of the grid as lowercase letters separated by spaces (e.g., 'q w e r'")
@@ -194,19 +240,14 @@ def get_user_grid():
 
 
 def main():
-    # race = input("What race do you play?\n").lower()
-    # grid = get_user_grid()
-    # prefix = ""
-    # if "y" in input("Prefix grid hotkeys with another key (e.g., Shift or Ctrl)? [Y/N]\n").lower():
-    #     prefix = input("Type prefix (format like 'Shift', 'Alt', 'Control'):\n") + "+"
-    # name = input(
-    #     "What should the name of the hotkey profile be? (no space):\n")
-
-    # Comment-out above and Un-comment below for hard-coded preferences.
-    race = "zerg"
-    grid = False
-    prefix = "Control"
-    name = "zerg-control-grid"
+    race = input("What race do you play?\n").lower()
+    grid = get_user_grid()
+    prefix = ""
+    if "y" in input("Prefix grid hotkeys with another key (e.g., Shift or Ctrl)? [Y/N]\n").lower():
+        prefix = input(
+            "Type prefix (format like 'Shift', 'Alt', 'Control'):\n") + "+"
+    name = input(
+        "What should the name of the hotkey profile be? (no space):\n")
 
     hotkey_profile = GridHotkeys(
         race, name, custom_grid=grid, grid_key_prefix=prefix)
