@@ -37,7 +37,7 @@ Grid Layout:
 
 import os
 import json
-from test import test_cases
+from tests import test_cases
 
 
 def pwd():
@@ -51,7 +51,7 @@ def find_file(keywords, sub_dir=""):
     Args:
         keywords (list) : File must include each str element to be a match.
         sub_dir (str)   : Indicate path string relative to script root, 
-            enclose with a /.
+        enclose with a /.
 
     Returns:
         str : Absoute path of first match.
@@ -121,7 +121,7 @@ class WhichRace:
         ret = {"protoss": [], "zerg": [], "terran": []}
 
         for race in ret.keys():
-            txt_file = find_file([race], "units-buildings/")
+            txt_file = find_file([race], "data/units-buildings/")
             lines = open(txt_file, "r").readlines()
             for line in lines:
                 cleaned = ""
@@ -138,7 +138,7 @@ class WhichRace:
 
 
 class GridHotkeys:
-    def __init__(self, race, profile_name, custom_grid=False, grid_key_prefix=""):
+    def __init__(self, race, profile_name, custom_grid=False, grid_key_prefix="", verbose=False):
         """
         Implements:
             WhichRace
@@ -150,15 +150,20 @@ class GridHotkeys:
         """
         self.race = race
         self.raw = self._read_json()
-        self.find_race = WhichRace(verbose=True)
+        self.find_race = WhichRace(verbose=verbose)
         self.race_hotkeys = self._filter_race()
 
         self.reference_grid = [
             "q", "w", "e", "r", "t",
             "a", "s", "d", "f", "g",
+            "y", "x", "c", "v", "b"
+        ]
+        self.default_grid = [
+            "q", "w", "e", "r", "t",
+            "a", "s", "d", "f", "g",
             "z", "x", "c", "v", "b"
         ]
-        self.grid_key = custom_grid or self.reference_grid
+        self.grid_key = custom_grid or self.default_grid
         self.prefix = grid_key_prefix
         self.profile_name = profile_name
 
@@ -174,8 +179,7 @@ class GridHotkeys:
             # I.e., don't try to reassign hotkeys outside of grid
             # like control groups, camera control, etc.
             if curr_key.lower() in self.reference_grid:
-                new_key = self.grid_key[self.reference_grid.index(
-                    curr_key.lower())]
+                new_key = self.grid_key[self.reference_grid.index(curr_key.lower())]
                 new_key = self.prefix + new_key.upper()
                 ret_keys.append(
                     f"{''.join(unit)}={new_key}"
@@ -209,7 +213,7 @@ class GridHotkeys:
 
 
         """
-        with open(find_file(["raw", "json"]), "r") as json_file:
+        with open(find_file(["raw", "json"], sub_dir="data/"), "r") as json_file:
             data = json.load(json_file)
             return data["raw"]
 

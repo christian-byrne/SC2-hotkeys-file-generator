@@ -20,7 +20,7 @@
 
 Currently only works by supporting a grid defined by user. In other words, there is a 4x5 grid when you select a unit/building and look at the abilities/options in the bottom right of the UI -- the user can assign a hotkey for each position in that grid so that it's consistent across all units/buildings. Other types of logic can easily be implemented, however -- but probably doesn't require code in those cases.
 
-**Note**: Issues or desired features => create a post. I only tested this on my own system because I didn't want to download SC2 on my other computers, so apologies for possible bugs. Hopefully you can stil figure out how the script generally works by reading this page -- and then use the info and the files in the repo to solve your problems. Many possible uses for the script could be replaced by some smart search/replace logic or Regex, especially if you look at the json file as a reference first. GLHF.
+**Note**: Issues or desired features => create a post. I only tested this on my own system (for zerg and protoss grids) because I didn't want to download SC2 on my other computers, so apologies for possible bugs. Hopefully you can stil figure out how the script generally works by reading this page -- and then use the info and the files in the repo to solve your problems. Many possible uses for the script could be replaced by some smart search/replace logic or Regex, especially if you look at the json file as a reference first. GLHF.
 
 
 ## Reasons to Use
@@ -55,14 +55,14 @@ Currently only works by supporting a grid defined by user. In other words, there
 
 ```bash
 # Unix/MacOS
-python3 grid.py
+python3 gen_hotkeys.py
 
 # Windows
-py grid.py
+py gen_hotkeys.py
 ```
 
 10. Follow instructions that appear in the terminal
-11. The output file will be in the same folder you are in (`sc2-hotkeys` folder). There are two example files there already (`zerg-control-grid.SC2Hotkeys` and `zerg-shift-grid.SC2Hotkeys`)
+11. The output file will be in the same folder you are in (`sc2-hotkeys` folder). There are two example files in the `example-output` folder (`zerg-control-grid.SC2Hotkeys` and `zerg-shift-grid.SC2Hotkeys`)
 12. Drag and drop the output file (its extension should be `.SC2Hotkeys`) to your SC2 Hotkeys folder ([See: Where is sc2 hotkey folder on my computer?](https://liquipedia.net/starcraft2/Hotkeys#:~:text=Hotkeys%20are%20stored%20in%20the,your%20Windows%20My%20Documents%20folder.)). If you've never made any custom hotkeys, you may need to create a new hotkey profile in the SC2 game and make a single change, and the folder will be generated. 
 13. Restart/start the game. In SC2 game, go to `Menu` -> `Options` -> `Hotkeys` -> `Select Profile`
 14. click `ignore` if prompted about hotkey conflicts.
@@ -88,7 +88,7 @@ Used vim to convert all the hotkey values in those files to standard array synta
 
 ##### Save as `json` File
 
-Save the formatted data to a [json file](./raw-grid-assignments.json) for efficiency. Import python `json` module and add function to read in data.
+Save the formatted data to a [json file](./data/raw-grid-assignments.json) for efficiency. Import python `json` module and add function to read in data.
 
 ##### Classifying Hotkey Assignments by Race
 
@@ -96,7 +96,7 @@ Data is organized alphabetically. So I need a key that maps races to their units
 
 Searched "SC2 Zerg Units" to find a wiki site that listed units/buildings with minimal markup and preferably not in an HTML table. Found a relatively unformatted list in the third result at [strategywiki.org](https://strategywiki.org/wiki/StarCraft_II:_Wings_of_Liberty/Zerg_buildings) for each race's buildings and units.
 
-Copy and pasted the data into [text files for each race.](./units-building)
+Copy and pasted the data into [text files for each race.](./data/units-building)
 
 Added function to read, parse and organize the data into python structures. The data was numbered so just had to create copies of each line and filter out any character that wasn't alpha.
 
