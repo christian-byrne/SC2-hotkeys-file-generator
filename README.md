@@ -15,12 +15,20 @@
 - [To Do](#to-do)
 
 
-*Automates the process of generating SC2 hotkey files which adhere to some sort of universal logic.* 
+----------------
+
+Automates the process of generating SC2 hotkey files which adhere to some sort of universal logic. 
 
 
-Currently only works by supporting a grid defined by user. In other words, there is a 4x5 grid when you select a unit/building and look at the abilities/options in the bottom right of the UI -- the user can assign a hotkey for each position in that grid so that it's consistent across all units/buildings. Other types of logic can easily be implemented, however -- but probably doesn't require code in those cases.
+![example grid](./wiki-pics/grid-example.jpg)
 
-**Note**: Issues or desired features => create a post. I only tested this on my own system (for zerg and protoss grids) because I didn't want to download SC2 on my other computers, so apologies for possible bugs. Hopefully you can stil figure out how the script generally works by reading this page -- and then use the info and the files in the repo to solve your problems. Many possible uses for the script could be replaced by some smart search/replace logic or Regex, especially if you look at the json file as a reference first. GLHF.
+> The user can assign a hotkey for each position in that grid so that it's consistent across all units/buildings. Other types of logic can easily be implemented, however -- but probably doesn't require use of a script.
+
+![example result](./wiki-pics/example-result.png)
+
+> Example result with a grid that corresponds to a grid made by the positions of the keys on a qwerty keyboard -- with every hotkey prefixed with the Shift key.
+
+**Note**: Issues or desired features => create a post. I only tested this on my own system (for zerg and protoss grids prefixed with Shift and Control keys) because I didn't want to download SC2 on my other computers, so apologies for possible bugs. Hopefully you can stil figure out how the script generally works by re  ading this page -- and then use the info and the files in the repo to solve your problems. Many possible uses for the script could be replaced by some smart search/replace logic or Regex, especially if you look at the json file as a reference first. GLHF.
 
 
 ## Reasons to Use
@@ -28,11 +36,14 @@ Currently only works by supporting a grid defined by user. In other words, there
 <details>
     <summary>Click to Expand</summary>
 
-- Allows you to add two-key hotkeys for all actions, which is not possible in the options screen of SC2 (may have changed since I wrote this.)
-  - For example, add hotkey `Ctrl+D` to make a drone -- not possible usually but this script allows it
-- Create hotkeys that correspond to universal grid-based logic
+- You are left-handed or are a person with a disability and all the grid hotkey templates are for right-handed people
+- You want to create hotkeys that correspond to universal grid-based logic personalized to your setup or capabilities
   - This is the most common suggestion/tip I found when researching guides and forum posts about using the best hotkey setup.
-- Saves time
+- You want to create your own grid
+- You want the hotkeys for every unit/building to be the same according to position in the grid, but want the key for each grid slot to be custom
+- You want to add two-key hotkeys for all actions, which SC2 normally does not let you do in the hotkeys options screen (may have changed since I wrote this.)
+  - For example, add hotkey `Ctrl+D` to make a drone -- not possible usually but this script allows it
+- To save time
   - Since this mass changes all hotkeys, it saves you from the tedious process of individually changing each hotkey
   - You may then be more willing to experiment with different setups knowing that it won't be tedious creating new profiles
 - Automatically creates a hotkey file that you can drag and drop to your `C:\Users\User\Documents\Starcraft II\User\Hotkeys` Folder
