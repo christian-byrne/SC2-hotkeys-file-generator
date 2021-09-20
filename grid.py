@@ -77,7 +77,7 @@ class WhichRace:
         # Verbose mode for debugging or seeing process.
         if self.verbose:
             print(
-                "hotkey",
+                hotkey,
                 f"{cur if cur else 'all'}",
                 "",
                 sep="\n"
@@ -118,7 +118,7 @@ class GridHotkeys:
         """
         self.race = race
         self.raw = self._read_json()
-        self.find_race = WhichRace()
+        self.find_race = WhichRace(verbose=True)
         self.race_hotkeys = self._filter_race()
 
         self.reference_grid = [
@@ -194,19 +194,19 @@ def get_user_grid():
 
 
 def main():
-    race = input("What race do you play?\n").lower()
-    grid = get_user_grid()
-    prefix = ""
-    if "y" in input("Prefix grid hotkeys with another key (e.g., Shift or Ctrl)? [Y/N]\n").lower():
-        prefix = input("Type prefix (format like 'Shift', 'Alt', 'Control'):\n") + "+"
-    name = input(
-        "What should the name of the hotkey profile be? (no space):\n")
+    # race = input("What race do you play?\n").lower()
+    # grid = get_user_grid()
+    # prefix = ""
+    # if "y" in input("Prefix grid hotkeys with another key (e.g., Shift or Ctrl)? [Y/N]\n").lower():
+    #     prefix = input("Type prefix (format like 'Shift', 'Alt', 'Control'):\n") + "+"
+    # name = input(
+    #     "What should the name of the hotkey profile be? (no space):\n")
 
-    # Auto Settings for Debugging
-    # race = "zerg"
-    # grid = False
-    # prefix = "Shift"
-    # name = "zerg-shift-grid"
+    # Comment-out above and Un-comment below for hard-coded preferences.
+    race = "zerg"
+    grid = False
+    prefix = "Control"
+    name = "zerg-control-grid"
 
     hotkey_profile = GridHotkeys(
         race, name, custom_grid=grid, grid_key_prefix=prefix)
